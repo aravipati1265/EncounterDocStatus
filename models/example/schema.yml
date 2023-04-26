@@ -2,20 +2,48 @@
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
+
+    - name: vw_UserDetails
+      description: "Users view dbt model"
       columns:
-          - name: id
+          - name: User_login_name
             description: "The primary key for this table"
             tests:
                 - unique
                 - not_null
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
+    - name: vw_EncounterStatus
+      description: "Encounter view dbt model"
       columns:
-          - name: id
+          - name: Encounter_Doc_Status
             description: "The primary key for this table"
             tests:
-                - unique
-                - not_null
+                - accepted_values:
+                    values: ['Open', 'Ready for Coding Review', 'Finalized Documentation', 'Review Coder Query']
+
+#    - name: tbl_User_EncounterDetails
+#      description: "User Encounter table dbt model"
+ #     columns:
+  #        - name: Encounter_Id
+   #         description: "The primary key for this table"
+    ##        tests:
+      #          - not_null
+
+#    - name: my_first_dbt_model
+#      description: "A starter dbt model"
+#      columns:
+#          - name: id
+#            description: "The primary key for this table"
+#            tests:
+#                - unique
+#                - not_null
+
+#    - name: my_second_dbt_model
+#      description: "A starter dbt model"
+#      columns:
+#          - name: id
+#            description: "The primary key for this table"
+#            tests:
+#                - unique
+#                - not_null
+

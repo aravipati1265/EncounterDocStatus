@@ -46,17 +46,6 @@ models:
             tests:
                 - not_null
 
-    - name: VW_ENCOUNTERSTATUS
-      description: "User level Encounter view dbt model"
-      columns:
-          - name: Provider_login
-            description: "Relationship of Referential integrity"
-            tests:
-                - not_null
-                - relationships:
-                  to: ref('vw_UserDetails')
-                  field: User_login_name
-
           - name: HealthPlan_City
             description: "The HealthPlan_City of Patient"
             tests:

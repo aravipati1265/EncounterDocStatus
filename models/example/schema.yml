@@ -22,7 +22,7 @@ models:
       description: "Encounter view dbt model"
       columns:
           - name: Encounter_Id
-            description: "The primary key for this table"
+            description: "The primary and Unique key for this table"
             tests:
                 - unique
                 - not_null

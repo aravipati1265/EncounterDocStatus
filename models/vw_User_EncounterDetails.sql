@@ -17,13 +17,14 @@ final as (
 
     select
         E.HealthPlan_City,
+        E.Provider_login
         U.User_FullName as Provider_name,
         E.Encounter_Doc_Status,
         E.Encounter_date,
         Count(distinct E.Encounter_Id) as visits
 
     from Encounters E
-     join Users U ON  Concat('LANDMARKHEALTH\\' ,'',E.Provider_login) = U.User_login_name
+     join Users U ON  E.Provider_login = U.User_login_name
      Group by 1,2,3,4
 
 )

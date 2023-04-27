@@ -11,16 +11,85 @@ models:
             tests:
                 - unique
                 - not_null
+              
+
+          - name: User_FullName
+            description: "Concatination of User_First_name and User_Last_name that is mandatory and cannot be null"
+            tests:
+                - not_null     
 
     - name: vw_EncounterStatus
       description: "Encounter view dbt model"
       columns:
-          - name: Encounter_Doc_Status
+          - name: Encounter_Id
             description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+          - name: Encounter_Doc_Status
+            description: "Encounter statuses"
             tests:
                 - accepted_values:
                     values: ['Open', 'Ready for Coding Review', 'Finalized Documentation', 'Review Coder Query']
 
+          - name: HealthPlan_City
+            description: "The HealthPlan_City of Patient"
+
+          - name: Provider_login
+            description: "Provider login who created the Encounter"  
+            tests:
+                - not_null
+
+          - name: Encounter_date
+            description: "Date when the encounter was performed by the provider"  
+            tests:
+                - not_null
+
+    - name: VW_ENCOUNTERSTATUS
+      description: "User level Encounter view dbt model"
+      columns:
+          - name: Provider_login
+            description: "Relationship of Referential integrity"
+            tests:
+                - not_null
+                - relationships:
+                  to: ref('vw_UserDetails')
+                  field: User_login_name
+
+          - name: HealthPlan_City
+            description: "The HealthPlan_City of Patient"
+            tests:
+                - not_null
+
+          - name: Provider_name
+            description: "Concatination of User_First_name and User_Last_name that is mandatory and cannot be null"
+            tests:
+                - not_null
+                
+          - name: Encounter_Doc_Status
+            description: "Encounter Statuses"
+            tests:
+                - accepted_values:
+                    values: ['Open', 'Ready for Coding Review', 'Finalized Documentation', 'Review Coder Query']
+
+          - name: Provider_login
+            description: "Provider login who created the Encounter"  
+            tests:
+                - not_null
+
+          - name: Encounter_date
+            description: "Date when the encounter was performed by the provider"  
+            tests:
+                - not_null    
+
+          - name: Visits
+            description: "Count of distinct encounters by Healthplan_city,Provider_name,Encounter_Doc_Status and Encounter_date"  
+
+          - name: Provider_login
+            description: "Provider login who created the Encounter"  
+            tests:
+                - not_null               
 #    - name: tbl_User_EncounterDetails
 #      description: "User Encounter table dbt model"
  #     columns:

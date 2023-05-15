@@ -33,9 +33,7 @@ models:
                 - accepted_values:
                     values: ['Open', 'Ready for Coding Review', 'Finalized Documentation', 'Review Coder Query']
 
-          - name: HealthPlan_City
-            description: "The HealthPlan_City of Patient"
-
+         
           - name: Provider_login
             description: "Provider login who created the Encounter"  
             tests:
@@ -52,34 +50,11 @@ models:
             tests:
                 - not_null
 
-          - name: Provider_name
-            description: "Concatination of User_First_name and User_Last_name that is mandatory and cannot be null"
-            tests:
-                - not_null
-                
-          - name: Encounter_Doc_Status
-            description: "Encounter Statuses"
-            tests:
-                - accepted_values:
-                    values: ['Open', 'Ready for Coding Review', 'Finalized Documentation', 'Review Coder Query']
-
-          - name: Provider_login
-            description: "Provider login who created the Encounter"  
-            tests:
-                - not_null
-
-          - name: Encounter_date
-            description: "Date when the encounter was performed by the provider"  
-            tests:
-                - not_null    
-
+  
           - name: Visits
             description: "Count of distinct encounters by Healthplan_city,Provider_name,Encounter_Doc_Status and Encounter_date"  
 
-          - name: Provider_login
-            description: "Provider login who created the Encounter"  
-            tests:
-                - not_null    
+         
 
 
 #    - name: tbl_User_EncounterDetails

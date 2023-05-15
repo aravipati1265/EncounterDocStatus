@@ -25,7 +25,7 @@ final as (
 
     from Encounters E
      join Users U ON  E.Provider_login = U.User_login_name
-     Group by 1,2,3,4,5
+     Group by 1,2,3,4
 
 )
 

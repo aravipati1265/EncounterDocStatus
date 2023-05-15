@@ -17,7 +17,7 @@ final as (
 
     select
         E.HealthPlan_City,
-        E.Provider_login
+        E.Provider_login,
         U.User_FullName as Provider_name,
         E.Encounter_Doc_Status,
         E.Encounter_date,
